@@ -1,4 +1,4 @@
-# DoggyDeals - Modern Dog Selling Platform
+# Pawtastic - Modern Dog Selling Platform
 
 A modern web application for buying and selling dogs, built with Next.js 14, TypeScript, Tailwind CSS, and Firebase.
 
