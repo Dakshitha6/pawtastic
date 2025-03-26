@@ -6,16 +6,16 @@ export default async function BrowseDogsPage() {
   const dogs = await getDogs();
 
   return (
-    <div className="container py-10">
-      <div className="flex flex-col gap-6">
-        <div>
-          <h1 className="text-3xl font-bold">Browse Dogs</h1>
-          <p className="text-muted-foreground">
+    <div className="container py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="flex flex-col gap-8">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold tracking-tight">Browse Dogs</h1>
+          <p className="mt-4 text-lg text-muted-foreground">
             Find your perfect companion from our available dogs
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8">
           {dogs.map((dog: DogListing) => (
             <DogCard key={dog.id} dog={dog} />
           ))}

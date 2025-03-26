@@ -61,7 +61,7 @@ export function useImageUpload() {
       const response = await fetch("/api/upload", {
         method: "POST",
         headers: {
-          "x-api-key": process.env.API_KEY || "",
+          "x-api-key": process.env.NEXT_PUBLIC_API_KEY || "",
           Authorization: `Bearer ${token}`,
         },
         body: formData,

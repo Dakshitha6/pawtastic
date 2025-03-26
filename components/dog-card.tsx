@@ -49,26 +49,31 @@ export function DogCard({ dog }: DogCardProps) {
 
   return (
     <>
-      <Card className="overflow-hidden">
-        <div className="relative aspect-square">
+      <Card className="group overflow-hidden transition-all duration-300 hover:shadow-lg flex flex-col h-full">
+        <div className="relative aspect-square overflow-hidden">
           <Image
             src={dog.imageUrl}
             alt={dog.name}
             fill
-            className="object-cover"
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            priority
           />
         </div>
-        <CardContent className="p-4">
-          <div className="flex justify-between items-start mb-2">
-            <div>
-              <h3 className="font-semibold text-lg">{dog.name}</h3>
-              <p className="text-sm text-muted-foreground">{dog.breed}</p>
+        <CardContent className="p-6 flex-1">
+          <div className="flex justify-between items-start gap-4">
+            <div className="flex-1 min-w-0">
+              <h3 className="font-semibold text-xl truncate">{dog.name}</h3>
+              <p className="text-muted-foreground mt-1">{dog.breed}</p>
             </div>
-            <p className="text-lg font-bold">{formatCurrency(dog.price)}</p>
+            <p className="text-lg font-bold whitespace-nowrap">
+              {formatCurrency(dog.price)}
+            </p>
           </div>
-          <div className="space-y-2">
-            <p className="text-sm">Age: {dog.age} years</p>
+          <div className="mt-4 space-y-2">
+            <p className="text-sm text-muted-foreground">
+              {dog.age} {dog.age === 1 ? "year" : "years"} old
+            </p>
             <div>
               <p
                 className={cn(
@@ -81,7 +86,7 @@ export function DogCard({ dog }: DogCardProps) {
               {dog.description.length > 100 && (
                 <button
                   onClick={() => setIsExpanded(!isExpanded)}
-                  className="text-sm text-primary hover:underline mt-1 focus:outline-none"
+                  className="text-sm text-primary hover:underline mt-2 focus:outline-none"
                 >
                   {isExpanded ? "Read less" : "Read more"}
                 </button>
@@ -89,16 +94,17 @@ export function DogCard({ dog }: DogCardProps) {
             </div>
           </div>
         </CardContent>
-        <CardFooter className="p-4 pt-0 gap-2">
+        <CardFooter className="p-6 pt-0 flex gap-3 mt-auto">
           <Button
             variant="outline"
-            className="flex-1"
+            size="sm"
+            className="flex-1 h-9"
             onClick={handleAddToCart}
           >
             <ShoppingCart className="w-4 h-4 mr-2" />
             Add to Cart
           </Button>
-          <Button className="flex-1" onClick={handleBuyNow}>
+          <Button size="sm" className="flex-1 h-9" onClick={handleBuyNow}>
             Buy Now
           </Button>
         </CardFooter>
