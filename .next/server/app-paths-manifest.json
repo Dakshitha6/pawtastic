@@ -1,7 +1,7 @@
 {
   "/page": "app/page.js",
-  "/list-dog/page": "app/list-dog/page.js",
-  "/dogs/page": "app/dogs/page.js",
+  "/services/page": "app/services/page.js",
   "/dogs/browse/page": "app/dogs/browse/page.js",
+  "/dogs/page": "app/dogs/page.js",
   "/dogs/my-listings/page": "app/dogs/my-listings/page.js"
 }

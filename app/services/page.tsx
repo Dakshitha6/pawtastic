@@ -52,7 +52,7 @@ const services = [
       "Puppy training",
       "Group classes",
     ],
-    price: "From $50/session",
+    price: "From ₹3,999/session",
   },
   {
     title: "Veterinary Care",
@@ -64,7 +64,7 @@ const services = [
       "Emergency care",
       "Dental services",
     ],
-    price: "Consultation from $75",
+    price: "Consultation from ₹5,999",
   },
   {
     title: "Professional Grooming",
@@ -76,7 +76,7 @@ const services = [
       "Nail clipping",
       "Ear cleaning",
     ],
-    price: "From $45/session",
+    price: "From ₹3,499/session",
   },
   {
     title: "Pet Boarding",
@@ -88,7 +88,7 @@ const services = [
       "Daily exercise",
       "Individual attention",
     ],
-    price: "From $35/night",
+    price: "From ₹2,999/night",
   },
 ];
 
@@ -156,7 +156,7 @@ export default function ServicesPage() {
                         <CardDescription>{service.description}</CardDescription>
                       </div>
                     </div>
-                    <Badge variant="secondary">{service.price}</Badge>
+                    <div>{service.price}</div>
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-2">
