@@ -1,4 +1,1 @@
-{
-  "node": {},
-  "edge": {}
-}
+{"node":{"d2b448eb23cf84436cb41e43b658c7aef2e737c5":{"workers":{"app/dogs/browse/page":40174,"app/dogs/my-listings/page":40264},"layer":{"app/dogs/browse/page":"rsc","app/dogs/my-listings/page":"action-browser"}},"0a9cd02d84f4568688ae26af4883ee05909db4d6":{"workers":{"app/dogs/browse/page":40174,"app/dogs/my-listings/page":40264},"layer":{"app/dogs/browse/page":"rsc","app/dogs/my-listings/page":"action-browser"}},"93644b439ed33c401c6493d04e82ef22ad77f6dd":{"workers":{"app/dogs/browse/page":40174,"app/dogs/my-listings/page":40264},"layer":{"app/dogs/browse/page":"rsc","app/dogs/my-listings/page":"action-browser"}}},"edge":{}}

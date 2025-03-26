@@ -11,6 +11,10 @@ import {
   applyActionCode,
   setPersistence,
   browserLocalPersistence,
+  GoogleAuthProvider,
+  signInWithPopup,
+  UserCredential,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import { useRouter } from "next/navigation";
@@ -19,20 +23,30 @@ interface AuthContextType {
   user: User | null;
   loading: boolean;
   signIn: (email: string, password: string) => Promise<void>;
-  signUp: (email: string, password: string) => Promise<void>;
+  signUp: (email: string, password: string) => Promise<UserCredential>;
+  signInWithGoogle: () => Promise<void>;
   logout: () => Promise<void>;
   sendVerificationEmail: () => Promise<void>;
   verifyEmail: (actionCode: string) => Promise<void>;
+  resetPassword: (email: string) => Promise<void>;
+  resendVerificationEmail: () => Promise<void>;
+  refreshUser: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType>({
   user: null,
   loading: true,
   signIn: async () => {},
-  signUp: async () => {},
+  signUp: async () => {
+    throw new Error("Not implemented");
+  },
+  signInWithGoogle: async () => {},
   logout: async () => {},
   sendVerificationEmail: async () => {},
   verifyEmail: async () => {},
+  resetPassword: async () => {},
+  resendVerificationEmail: async () => {},
+  refreshUser: async () => {},
 });
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
@@ -72,6 +86,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return userCredential;
   };
 
+  const signInWithGoogle = async () => {
+    const provider = new GoogleAuthProvider();
+    await signInWithPopup(auth, provider);
+  };
+
   const logout = async () => {
     await signOut(auth);
     // Ensure we redirect to login after logout
@@ -93,6 +112,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  const resetPassword = async (email: string) => {
+    await sendPasswordResetEmail(auth, email);
+  };
+
+  const resendVerificationEmail = async () => {
+    if (auth.currentUser && !auth.currentUser.emailVerified) {
+      await sendEmailVerification(auth.currentUser);
+    }
+  };
+
+  const refreshUser = async () => {
+    if (auth.currentUser) {
+      await auth.currentUser.reload();
+      setUser({ ...auth.currentUser });
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -100,9 +136,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         loading,
         signIn,
         signUp,
+        signInWithGoogle,
         logout,
         sendVerificationEmail,
         verifyEmail,
+        resetPassword,
+        resendVerificationEmail,
+        refreshUser,
       }}
     >
       {children}

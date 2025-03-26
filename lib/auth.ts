@@ -19,7 +19,8 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
-        token.emailVerified = user.emailVerified || false;
+        token.emailVerified =
+          user.emailVerified instanceof Date ? true : !!user.emailVerified;
       }
       return token;
     },
@@ -55,7 +56,7 @@ declare module "next-auth" {
     name?: string | null;
     email?: string | null;
     image?: string | null;
-    emailVerified?: boolean;
+    emailVerified?: boolean | Date;
   }
 }
 
