@@ -187,7 +187,10 @@ export default function ServicesPage() {
             <motion.h2 variants={fadeInUp} className="text-3xl font-bold mb-4">
               Why Choose Our Services?
             </motion.h2>
-            <motion.p variants={fadeInUp} className="text-muted-foreground">
+            <motion.p
+              variants={fadeInUp}
+              className="text-muted-foreground dark:text-muted"
+            >
               We provide top-quality pet care services with a focus on your
               pet's well-being and happiness
             </motion.p>
@@ -211,7 +214,9 @@ export default function ServicesPage() {
                   </div>
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
+                <p className="text-muted-foreground dark:text-muted">
+                  {feature.description}
+                </p>
               </motion.div>
             ))}
           </motion.div>

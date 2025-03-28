@@ -18,9 +18,7 @@ export default function CartPage() {
         <h1 className="text-3xl font-bold mb-6">Shopping Cart</h1>
         <Card className="p-8 text-center">
           <p className="text-muted-foreground mb-4">Your cart is empty</p>
-          <Button onClick={() => router.push("/dogs/browse")}>
-            Browse Dogs
-          </Button>
+          <Button onClick={() => router.push("/dogs")}>Browse Dogs</Button>
         </Card>
       </div>
     );
